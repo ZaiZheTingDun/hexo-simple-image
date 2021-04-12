@@ -2,14 +2,14 @@
  * Simple test of function
  */
 
-const plugin = require('../lib/index');
+const plugin = require('../lib/index')
 
 let data = { content: "" }
 
 /**
  * 1. happy path
  */
-data.content = '![alt](./test/test.png \"title\")'
+data.content = '![alt](./test/test.png "title")'
 plugin(data)
 if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
     throw "failed."
@@ -17,7 +17,7 @@ if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
 /**
  * 2. chinese
  */
-data.content = '![描述](./测试/测试.png \"标题\")'
+data.content = '![描述](./测试/测试.png "标题")'
 plugin(data)
 if (data.content !== '{% asset_img 测试.png \'"标题" "描述"\' %}')
     throw "failed."
@@ -25,7 +25,7 @@ if (data.content !== '{% asset_img 测试.png \'"标题" "描述"\' %}')
 /**
  * 3. another file path
  */
- data.content = '![alt](test/test.png \"title\")'
+ data.content = '![alt](test/test.png "title")'
  plugin(data)
  if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
      throw "failed."
