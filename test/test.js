@@ -30,4 +30,12 @@ if (data.content !== '{% asset_img 测试.png \'"标题" "描述"\' %}')
  if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
      throw "failed."
 
+/**
+ * 4. no title
+ */
+ data.content = '![alt](test/test.png)'
+ plugin(data)
+ if (data.content !== '{% asset_img test.png \'"" "alt"\' %}')
+     throw "failed."
+
 console.log("success.")
