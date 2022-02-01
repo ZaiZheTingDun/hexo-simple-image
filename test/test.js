@@ -11,7 +11,7 @@ let data = { content: "" }
  */
 data.content = '![alt](./test/test.png "title")'
 plugin(data)
-if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
+if (data.content !== '{% asset_img "test.png" \'"title" "alt"\' %}')
     throw "failed."
 
 /**
@@ -19,7 +19,7 @@ if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
  */
 data.content = '![描述](./测试/测试.png "标题")'
 plugin(data)
-if (data.content !== '{% asset_img 测试.png \'"标题" "描述"\' %}')
+if (data.content !== '{% asset_img "测试.png" \'"标题" "描述"\' %}')
     throw "failed."
 
 /**
@@ -27,7 +27,7 @@ if (data.content !== '{% asset_img 测试.png \'"标题" "描述"\' %}')
  */
  data.content = '![alt](test/test.png "title")'
  plugin(data)
- if (data.content !== '{% asset_img test.png \'"title" "alt"\' %}')
+ if (data.content !== '{% asset_img "test.png" \'"title" "alt"\' %}')
      throw "failed."
 
 /**
@@ -35,7 +35,15 @@ if (data.content !== '{% asset_img 测试.png \'"标题" "描述"\' %}')
  */
  data.content = '![alt](test/test.png)'
  plugin(data)
- if (data.content !== '{% asset_img test.png \'"" "alt"\' %}')
+ if (data.content !== '{% asset_img "test.png" \'"" "alt"\' %}')
      throw "failed."
+
+/**
+ * 5. path with whitespace
+ */
+data.content = '![alt](test/this is test.png)'
+plugin(data)
+if (data.content !== '{% asset_img "this is test.png" \'"" "alt"\' %}')
+    throw "failed."
 
 console.log("success.")
