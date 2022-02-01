@@ -1,6 +1,6 @@
 {
   "name": "hexo-simple-image",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "simple to use markdown render image.",
   "main": "index.js",
   "scripts": {
