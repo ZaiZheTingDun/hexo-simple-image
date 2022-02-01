@@ -7,5 +7,5 @@
     "test": "node test/test.js"
   },
   "author": "Xis",
-  "license": "ISC"
+  "license": "MIT"
 }
